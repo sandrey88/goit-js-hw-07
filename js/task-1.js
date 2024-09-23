@@ -1,19 +1,18 @@
-// Задача 1. Генератор slug
+// Елемент ul#categories
+const categoriesList = document.querySelector('#categories');
 
-function slugify(title) {
-  // Приведення рядка до нижнього регістру
-  const lowerCaseTitle = title.toLowerCase();
+// Всі елементи li з класом item всередині ul#categories
+const categoryItems = categoriesList.querySelectorAll('.item');
 
-  // Розбивка рядка на слова за пробілами
-  const words = lowerCaseTitle.split(' ');
+// Виводимо кількість категорій
+console.log(`Number of categories: ${categoryItems.length}`);
 
-  // Об'єднання слів, розділяючи їх тире
-  const slug = words.join('-');
+// Заголовок і кількість елементів для кожної категорії
+categoryItems.forEach(item => {
+  const categoryTitle = item.querySelector('h2').textContent;
+  const categoryElementsCount = item.querySelectorAll('ul li').length;
 
-  return slug;
-}
-
-console.log(slugify('Arrays for begginers')); // "arrays-for-begginers"
-console.log(slugify('English for developer')); // "english-for-developer"
-console.log(slugify('Ten secrets of JavaScript')); // "ten-secrets-of-javascript"
-console.log(slugify('How to become a JUNIOR developer in TWO WEEKS')); // "how-to-become-a-junior-developer-in-two-weeks"
+  // Виводимо назву категорії і кількість елементів в ній
+  console.log(`Category: ${categoryTitle}`);
+  console.log(`Elements: ${categoryElementsCount}`);
+});
